@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
+# import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,7 +49,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+SYSTEM_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,9 +58,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-INSTALLED_APPS += [
-    'rooms.apps.RoomsConfig'
+CUSTOM_APPS = [
+    "common.apps.CommonConfig",
+    "auth.apps.AuthConfig",
+    "collaborators.apps.CollaboratorsConfig",
+    "rooms.apps.RoomConfig",
+    "users.apps.UsersConfig",
 ]
+
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "rest_framework.authtoken",
+    "strawberry.django",
+    "corsheaders",
+]
+
+INSTALLED_APPS = SYSTEM_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,9 +90,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        # 'DIRS': [BASE_DIR / 'templates'],
         # Django 템플릿을 로드 할 때 검사 할 파일 시스템 디렉토리 목록(바로 검색 경로)
+        'DIRS': [],  # => [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,16 +106,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# TODO: db - postgresql
+# DONE: db connection to postgresql
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# if DEBUG:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gbzr',  # DB name
+        'USER': 'gbzr',  # user name in postgresql
+        'PASSWORD': 'devpassword',
+        'HOST': 'localhost',  # 추후 vm
+        'PORT': '5432',
     }
 }
+# else:
+#     DATABASES = {
+#         "default": dj_database_url.config(
+#             conn_max_age=600,
+#         )
+#     }
 
 
 # Password validation
@@ -133,14 +157,13 @@ TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
 USE_TZ = False  # True 인 경우 디폴트로 미국 시간 사용. False 로 변경해 주어야 설정한 시간대로 변경됨.
 
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# STATIC_URL: 실제 directory 경로가 아닌 말 그대로 URL만 나타냄. (실제 directory 경로)
 
 STATIC_URL = '/static/'
 
@@ -148,3 +171,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Customizing User model
+AUTH_USER_MODEL = "users.User"  # <myapp_name>.<user_model_name>
