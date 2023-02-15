@@ -95,7 +95,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# DONE: db connection to postgresql
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
