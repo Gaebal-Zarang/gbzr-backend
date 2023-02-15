@@ -1,7 +1,7 @@
 from django.db import models
 from common.models import CommonModel
 
-# DONE: project_room table
+
 class Room(CommonModel):
     """Project_Room Model Definition"""
 
@@ -24,7 +24,7 @@ class Room(CommonModel):
     founder = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
-        related_name="project_room",
+        related_name="room",
     )
 
 
@@ -32,7 +32,7 @@ class Room(CommonModel):
 class RoomPosition(models.Model):
     """Connection Project_Room and Position Model Definition"""
     max_applicant = models.IntegerField()
-    project_room = models.ForeignKey(
+    room = models.ForeignKey(
         "rooms.Room",
         on_delete=models.CASCADE,
         related_name="roomposition",
@@ -41,6 +41,21 @@ class RoomPosition(models.Model):
         "users.Position",
         on_delete=models.CASCADE,
         related_name="roomposition",
+    )
+
+
+# Connection table
+class Mark(models.Model):
+    """Connection User and Project_Room Model Definition"""
+    user = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="mark",
+    )
+    room = models.ForeignKey(
+        "rooms.Room",
+        on_delete=models.CASCADE,
+        related_name="mark",
     )
 
 

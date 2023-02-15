@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 
-# DONE: oauth table
+
 class Oauth(models.Model):
 
     """OAuth2 Model Definition"""
