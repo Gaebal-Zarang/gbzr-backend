@@ -1,4 +1,4 @@
-# Gaebal-Zarang-backend-django
+# Gaebal-Zarang-backend
 
 ## Set-up requirement
 
