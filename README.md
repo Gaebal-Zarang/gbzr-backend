@@ -6,7 +6,7 @@
 
 ## Setting steps
 
-0. pip install pyenv, poetry
+0. `pip install pyenv poetry`
 1. `pyenv virtualenv (python-version) gbzr-backend` > create virtual-env
 3. `pyenv local gbzr-backend` > set python-version in virtual-env
 
