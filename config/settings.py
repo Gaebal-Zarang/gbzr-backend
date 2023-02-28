@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
-import dotenv
 import environ
 
 
@@ -49,9 +48,9 @@ SYSTEM_APPS = [
 
 CUSTOM_APPS = [
     "common.apps.CommonConfig",
-    "auth.apps.AuthConfig",
+    "auths.apps.AuthsConfig",
     "collaborators.apps.CollaboratorsConfig",
-    "rooms.apps.RoomConfig",
+    "rooms.apps.RoomsConfig",
     "users.apps.UsersConfig",
 ]
 
@@ -107,7 +106,7 @@ DATABASES = {
         'USER': 'gbzr',  # user name in postgresql
         'PASSWORD': 'devpassword',
         'HOST': 'localhost',  # 추후 vm
-        'PORT': '5432',
+        'PORT': '35001',
     }
 }
 # else:
