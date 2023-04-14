@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.exceptions import ParseError, NotFound
 from rest_framework.permissions import IsAuthenticated
 
-from users import models as u_m
-from users import serializers as u_s
+from auths import serializers as s
+from auths import models as m
 
 
 class Signup(APIView):
@@ -19,14 +19,14 @@ class Signup(APIView):
         if not email or not raw_password:
             raise ParseError
         
-        serializer = u_s.SignupUserSerializer(data=request.data)
+        serializer = s.SignupUserSerializer(data=request.data)
         print(serializer)
 
         if serializer.is_valid():
             user = serializer.save()
             user.set_password(raw_password)  # hashed pw
             user.save()
-            serializer = u_s.SignupUserSerializer(user)
+            serializer = s.SignupUserSerializer(user)
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
