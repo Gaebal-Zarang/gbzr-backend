@@ -24,7 +24,7 @@ class Room(CommonModel):
     founder = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
-        related_name="room",
+        related_name="room_founder",
     )
 
 
