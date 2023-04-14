@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os, json
+import os
+import json
 from django.core.exceptions import ImproperlyConfigured
 import environ
 
@@ -31,7 +32,8 @@ SECRET_KEY = env("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = "RENDER" not in os.environ
 
 ALLOWED_HOSTS = []
 
@@ -100,13 +102,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # if DEBUG:
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gbzr',  # DB name
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'gbzrdb',  # DB name
         'USER': 'gbzr',  # user name in postgresql
         'PASSWORD': 'devpassword',
-        'HOST': 'localhost',  # 추후 vm
-        'PORT': '35001',
+        'HOST': '127.0.0.1',  # 추후 vm
+        'PORT': 5432,
     }
 }
 # else:
