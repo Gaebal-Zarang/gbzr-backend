@@ -38,20 +38,21 @@ class User(AbstractUser):
 
 
     name = models.CharField(
-        max_length=32,
+        max_length=128,
     )
     email = models.EmailField(
         verbose_name="email",
-        max_length=255,
+        max_length=256,
         unique=True,
     )
     nickname = models.CharField(
-        max_length=32,
-        unique=True,
+        max_length=128,
+        default="",
     )
     introduce = models.TextField()
-    region =  models.IntegerField(
+    region = models.IntegerField(
         choices=RegionChoices.choices,
+        default=False,
     )
     available_schedule = models.BooleanField(
         default=False,
@@ -68,12 +69,14 @@ class User(AbstractUser):
         default=0,
         choices=PlantStagesChoices.choices,
     )
-    is_host = models.BooleanField(
-        default=False,
-    )  # 방장
+    is_host = models.IntegerField(
+        default=0,
+    )  # 방장 (room number가 입력되면 방장임)
     position = models.ForeignKey(
         "users.Position",
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
         related_name="user_position",
     )
 
@@ -89,6 +92,7 @@ class Position(models.Model):
     position = models.CharField(
         max_length=32,
         choices=PositionChoices.choices,
+        default=False,
     )
     count = models.IntegerField()
 
