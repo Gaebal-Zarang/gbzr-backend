@@ -2,24 +2,33 @@ from django.shortcuts import render
 import jwt
 import requests
 from django.conf import settings
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.exceptions import ParseError, NotFound
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from users import models as m
 from users import serializers as s
 
 
 class Users(APIView):
-    permission_classes = [IsAuthenticated]  # owner권한
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         '''모든 유저의 정보 조회 (권장하지않음)'''
+        # User = get_user_model()
+        # print(User)
+        # users = User.objects.all()
+        # print(users)
+        # lisst = []
+        # for user in users:
+        #     serializer = s.PrivateUserSerializer(user)
+        #     list.append(serializer)
+        #     # print(serializer)
+        # return Response(lisst)
         pass
-
 
 class Me(APIView):
     permission_classes = [IsAuthenticated]
@@ -55,7 +64,7 @@ class Me(APIView):
 
 class SelectUserID(APIView):
     # 다른 회원 탈퇴시키기
-    permission_classes = [IsAuthenticated]  # owner권한
+    permission_classes = [IsAdminUser]
 
     def delete(self, request, id):
         select_user = self.get_object(id)
@@ -89,11 +98,12 @@ class ChangePassword(APIView):
             user.save()  # saving user object to db
             return Response(status=status.HTTP_200_OK)
         else:
-            raise ParseError
+            raise ParseError(detail="The password is wrong.")
 
 
 class ChangeUserRole(APIView):
-    # permission_classes = [IsAuthenticated]  # 관리자급
+    permission_classes = [IsAdminUser]
+
     def put(self, request, id):
         pass
     pass

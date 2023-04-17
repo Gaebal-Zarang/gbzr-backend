@@ -17,10 +17,8 @@ class SignupUserSerializer(ModelSerializer):
             "date_joined",
             "groups",
             "user_permissions",
-            "username",
             "nickname",
             "introduce",
-            "username",
         )  # 사용하지 않을 fields
 
         # fields = (
