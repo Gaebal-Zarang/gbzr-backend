@@ -20,7 +20,6 @@ class Signup(APIView):
             raise ParseError
         
         serializer = s.SignupUserSerializer(data=request.data)
-        print(serializer)
 
         if serializer.is_valid():
             user = serializer.save()
@@ -34,6 +33,7 @@ class Signup(APIView):
 
 class Login(APIView):
     def post(self, request):
+        # username = request.data.get("username")
         email = request.data.get("email")
         password = request.data.get("password")
         if not email or not password:
@@ -53,11 +53,7 @@ class Login(APIView):
                 status=status.HTTP_200_OK,
             )
         else:
-            # QUESTION: Response로 보내면 status_code가 200인가?
-            return Response(
-                {"error": "wrong password"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+            raise ParseError(detail="The password is wrong.")
 
 
 class Logout(APIView):
