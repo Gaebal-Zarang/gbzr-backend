@@ -104,11 +104,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'gbzrdb',  # DB name
-        'USER': 'gbzr',  # user name in postgresql
-        'PASSWORD': 'devpassword',
-        'HOST': '127.0.0.1',  # 추후 vm
-        'PORT': 5432,
+        "NAME": "gbzr",  # DB name
+        "USER": "gbzru",  # user name in postgresql
+        "PASSWORD": "devpassword",
+        "HOST": "127.0.0.1",  # 추후 vm
+        "PORT": 5432,
     }
 }
 # else:
