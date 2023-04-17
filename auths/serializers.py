@@ -20,6 +20,7 @@ class SignupUserSerializer(ModelSerializer):
             "username",
             "nickname",
             "introduce",
+            "username",
         )  # 사용하지 않을 fields
 
         # fields = (

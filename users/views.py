@@ -66,7 +66,7 @@ class SelectUserID(APIView):
 class SelectUserName(APIView):
     def get(self, request, name):
         try:
-            user = m.User.objects.get(name=name)
+            user = m.User.objects.get(username=name)
         except m.User.DoesNotExist:
             raise NotFound
         serializer = s.PublicUserSerializer(user)

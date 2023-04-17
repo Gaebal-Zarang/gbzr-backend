@@ -37,8 +37,13 @@ class User(AbstractUser):
         Flower = 20  # 꽃
 
 
-    name = models.CharField(
+    # name = models.CharField(
+    #     max_length=128,
+    #     default="",
+    # )
+    username = models.CharField(
         max_length=128,
+        unique=True,
     )
     email = models.EmailField(
         verbose_name="email",
@@ -69,9 +74,7 @@ class User(AbstractUser):
         default=0,
         choices=PlantStagesChoices.choices,
     )
-    is_host = models.IntegerField(
-        default=0,
-    )  # 방장 (room number가 입력되면 방장임)
+    is_host = models.BooleanField(default=False)
     position = models.ForeignKey(
         "users.Position",
         on_delete=models.CASCADE,
