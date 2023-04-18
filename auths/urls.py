@@ -1,6 +1,8 @@
 from django.urls import path
 from auths import views
 
+app_name = "auths"
+
 # url: v1/auth/
 urlpatterns = [
     path("signup", views.Signup.as_view()),
