@@ -17,18 +17,10 @@ class Users(APIView):
     permission_classes = [IsAdminUser]
 
     def get(self, request):
-        '''모든 유저의 정보 조회 (권장하지않음)'''
-        # User = get_user_model()
-        # print(User)
-        # users = User.objects.all()
-        # print(users)
-        # lisst = []
-        # for user in users:
-        #     serializer = s.PrivateUserSerializer(user)
-        #     list.append(serializer)
-        #     # print(serializer)
-        # return Response(lisst)
-        pass
+        '''모든 유저의 정보 조회 (권장하지않음, Owner권한만 접근 가능)'''
+        all_users = m.User.objects.all()
+        serializer = s.PrivateUserSerializer(all_users, many=True)
+        return Response(serializer.data)
 
 class Me(APIView):
     permission_classes = [IsAuthenticated]
