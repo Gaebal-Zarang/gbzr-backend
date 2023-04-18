@@ -7,6 +7,15 @@ from users import models as m
 
 # ref. https://www.django-rest-framework.org/api-guide/relations
 
+class TinyUserSerializer(ModelSerializer):
+    class Meta:
+        model = m.User
+        fields = (
+            "username",
+            "nickname",
+            "introduce",
+        )
+
 class PublicUserSerializer(ModelSerializer):
     # position = StringRelatedField(many=True)
     # portfolio = HyperlinkedRelatedField(read_only=True)
@@ -22,7 +31,6 @@ class PublicUserSerializer(ModelSerializer):
             "career",
             "profile_file_key",
             "plant_stage",
-            "is_host",
             "position",  # foreign key
             "portfolio",  # in Portfolio
         )
@@ -44,7 +52,6 @@ class PrivateUserSerializer(ModelSerializer):
             "profile_file_key",
             "role",
             "plant_stage",
-            "is_host",
             "position",  # foreign key
             "portfolio",  # in Portfolio
             "room_founder",  # in Room
