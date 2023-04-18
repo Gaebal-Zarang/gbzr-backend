@@ -26,6 +26,8 @@ class Room(CommonModel):
         on_delete=models.CASCADE,
         related_name="room_founder",
     )
+    # 모집 여부 : router에서 직접 구현해서 반환하기
+    # count : router에서 직접 구현해서 반환
 
 
 # Connection table
@@ -65,3 +67,13 @@ class Hashtag(CommonModel):
         max_length=256,
         primary_key=True,
     )
+    room = models.ManyToManyField(
+        "rooms.Room",
+        related_name="hashtags",
+    )
+    user = models.ManyToManyField(
+        "users.User",
+        related_name="hashtags",
+    )
+
+# DONE: hashtag와 room에 대해서 manytomany 필드를 사용해야함, 그래야 serializer에서 불러올 수 있다.
