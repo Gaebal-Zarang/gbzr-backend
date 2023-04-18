@@ -74,7 +74,6 @@ class User(AbstractUser):
         default=0,
         choices=PlantStagesChoices.choices,
     )
-    is_host = models.BooleanField(default=False)
     position = models.ForeignKey(
         "users.Position",
         on_delete=models.CASCADE,
