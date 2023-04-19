@@ -16,6 +16,7 @@ strawberry-graphql = {extras = ["debug-server"], version = "^0.130.4"}
 strawberry-graphql-django = "^0.5.1"
 django-cors-headers = "^3.13.0"
 psycopg2-binary = "^2.9.5"
+drf-yasg = "^1.21.5"
 
 
 [build-system]
