@@ -16,8 +16,8 @@ import json
 from django.core.exceptions import ImproperlyConfigured
 import environ
 
-
 env = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -21,11 +21,11 @@
 **Database**
 - ![Postgres badge](https://img.shields.io/badge/postgres-14.5-%23316192.svg?style=flat&logo=postgresql&logoColor=white)
 
-**Deploy**
+**Deploy (not yet)**
 - ![aws ec2 badge](https://img.shields.io/badge/AWS-EC2-%23FF9900?&logo=Amazon%20EC2&logoColor=white)
 - ![docker badge](https://img.shields.io/badge/Docker-20.10.17-%232496ED?&logo=Docker&logoColor=white)
 - ![nginx badge](https://img.shields.io/badge/Nginx-1.23.0-%23009639?logo=NGINX&locoColor=white)
-- ![Gunicorn badge](https://img.shields.io/badge/Gunicorn-0.20-499848.svg?style=flat&logo=Gunicorn&logoColor=white)
+- ![Gunicorn badge](https://img.shields.io/badge/Gunicorn-499848.svg?style=flat&logo=Gunicorn&logoColor=white)
 
 
 <br>
@@ -52,13 +52,13 @@
 
 <br>
 
-## 🌍 배포
-Docker, NginX, Gunicorn을 사용하여 AWS EC2 서버에 배포하였습니다.
+## 🌍 배포 (not yet)
+<!-- Docker, NginX, Gunicorn을 사용하여 AWS EC2 서버에 배포하였습니다.
 ➡️ [서비스 주소](13.124.201.55)
 
 기본 URL은 404 페이지 입니다.
 
-❗️ 현재 비용의 문제로 서버 접속은 불가능합니다.
+❗️ 현재 비용의 문제로 서버 접속은 불가능합니다. -->
 
 
 <!-- ## 📂 Directory Structure
@@ -66,17 +66,16 @@ Docker, NginX, Gunicorn을 사용하여 AWS EC2 서버에 배포하였습니다.
 
 ## 🕸 System Architecture
 <img width="1000" alt="System Architecture" src=""> -->
-
-
-
-<br>
-
-
-<br>
-<br>
-<br>
-
 ---
+
+
+<br>
+
+
+<br>
+<br>
+<br>
+
 
 
 <!-- ## Set-up requirement
