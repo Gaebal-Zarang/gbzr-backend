@@ -40,6 +40,7 @@
 <img width="1000" alt="ERD" src="https://user-images.githubusercontent.com/51039577/216359977-d3818314-4d74-483f-a30e-7fce2f44a6f8.png">
 
 ❗️ User 모델은 장고의 기본 User 모델을 그대로 사용하지 않고 커스텀하였습니다.
+
 ❗️ created_at, updated_at 속성은 Common 모델을 상속받도록 구현했습니다.
 
 
